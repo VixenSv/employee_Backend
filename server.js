@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const dotenv = require ('dotenv')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const userController = require('./src/controllers/user.controller')
 
 dotenv.config();
 const app = express();
@@ -30,6 +31,8 @@ mongoose.connection.once('open',()=>{
 app.route('/').get((req,res) => {
     res.send('web lankan');
 });
+
+app.use('/user',userController());
  
 app.listen(PORT,() => {
    
